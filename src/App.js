@@ -1,23 +1,25 @@
-
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import "./App.css";
+import { Footer } from "./components.js/Footer";
+import { Home } from "./components.js/Home";
+import { NavBar } from "./components.js/NavBar";
+import { Shop } from "./components.js/Shop";
+import { ShoppingCart } from "./components.js/ShoppingCart";
+import React from "react";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-screen h-screen bg-main-color font-main-font flex flex-col justify-between">
+      <Router basename="/">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="shop" element={<Shop />} />
+          <Route path="shopping-cart" element={<ShoppingCart />} />
+        </Routes>
+        <Footer />
+      </Router>
     </div>
   );
 }
