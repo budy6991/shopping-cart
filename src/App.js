@@ -17,7 +17,6 @@ function App() {
 
   const handleShoppingCart = (product) => {
     setCart(cart.concat(product));
-    console.log(cart);
   };
 
   useEffect(() => {
@@ -42,7 +41,7 @@ function App() {
   return (
     <div className="w-screen h-full bg-main-color flex flex-col justify-between">
       <Router basename="/">
-        <NavBar />
+        <NavBar cart={cart} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="shop" element={<Shop products={products} />} />
@@ -52,10 +51,11 @@ function App() {
               <ProductPage
                 products={products}
                 handleShoppingCart={handleShoppingCart}
+                shoppingCart={cart}
               />
             }
           />
-          <Route path="shopping-cart" element={<ShoppingCart />} />
+          <Route path="shopping-cart" element={<ShoppingCart cart={cart} />} />
         </Routes>
         <Footer />
       </Router>

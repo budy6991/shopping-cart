@@ -11,6 +11,9 @@ module.exports = {
         "main-font": ["Roboto", "sans-serif"],
         "title-font": ["Rubik Dirt", "cursive"],
       },
+      backgroundImage: {
+        "cart-logo": "url('/assets/cart-logo.png')",
+      },
     },
   },
   plugins: [],

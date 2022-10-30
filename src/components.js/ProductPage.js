@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Card } from "./Card";
 import { useNavigate } from "react-router-dom";
 
-export const ProductPage = ({ products, handleShoppingCart }) => {
+export const ProductPage = ({ products, handleShoppingCart, shoppingCart }) => {
   const params = useParams();
   const productId = Number(params.productId);
   let product = products.find((product) => product.id === productId);
@@ -29,6 +29,7 @@ export const ProductPage = ({ products, handleShoppingCart }) => {
     const handleUpdate = () => {
       setTotalPrice(quantity * product.price);
     };
+
     handleUpdate();
   }, [quantity]);
 
