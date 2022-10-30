@@ -6,21 +6,24 @@ import { Card } from "./Card";
 export const ProductPage = ({ products }) => {
   const params = useParams();
   const productId = Number(params.productId);
-  const [cuantity, setCuantity] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(0);
-
   let product = products.find((product) => product.id === productId);
-  console.log(product);
+  const [quantity, setQuantity] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(product.price);
 
-  //function that multiplies price for cuantity
-
-  const multiplier = (number, price) => {
-    return number * price;
+  const addProduct = () => {
+    setQuantity(quantity + 1);
   };
 
-  const handleClick = () => {
-    //This will submit
+  const substractProduct = () => {
+    setQuantity(quantity - 1);
   };
+
+  useEffect(() => {
+    const handleUpdate = () => {
+      setTotalPrice(quantity * product.price);
+    };
+    handleUpdate();
+  }, [quantity]);
 
   return (
     <div className="w-screen h-screen flex p-6 justify-center text-white gap-10">
@@ -41,9 +44,21 @@ export const ProductPage = ({ products }) => {
       <div className="w-1/2 h-3/5 flex flex-col justify-evenly items-center">
         <h1 className="text-justify">{product.description}</h1>
         <div className="w-3/5 flex justify-around font-title-font text-5xl">
-          <button>-</button>
-          <h2>{cuantity}</h2>
-          <button>+</button>
+          <button
+            onClick={() => {
+              substractProduct();
+            }}
+          >
+            -
+          </button>
+          <h2>{quantity}</h2>
+          <button
+            onClick={() => {
+              addProduct();
+            }}
+          >
+            +
+          </button>
         </div>
         <button className="font-title-font hover:text-black hover:bg-white p-3 rounded-full">
           ADD TO CART
