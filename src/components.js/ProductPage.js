@@ -1,17 +1,57 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Card } from "./Card";
 
 export const ProductPage = ({ products }) => {
   const params = useParams();
-  const productId = params.productId;
+  const productId = Number(params.productId);
+  const [cuantity, setCuantity] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(null);
 
-  const found = products.find((product) => (product.id = productId));
-  console.log(found);
+  let product = products.find((product) => product.id === productId);
+  console.log(product);
+
+  //function that multiplies price for cuantity
+
+  const multiplier = (number, price) => {
+    return number * price;
+  };
+
+  const handleClick = () => {
+    //This will submit
+  };
 
   return (
-    <div className="w-screen h-screen text-white text-5xl asfasdfasdff">
-      Hola buenas tardes me cago en la madre que me ha parido {productId}
+    <div className="w-screen h-screen flex p-6 justify-center text-white gap-10">
+      <div className="w-fit h-fit flex flex-col items-center gap-10">
+        <div className="w-4/6">
+          <div className="font-title-font text-3xl mb-6 text-center">
+            <h2>{product.title}</h2>
+          </div>
+          <img src={product.image} className="rounded-xl " />
+        </div>
+        <div className="font-title-font text-3xl">
+          <h2>Price {product.price}$</h2>
+        </div>
+        <div className="font-title-font text-xl">
+          <h2>Opinions: {product.rating.rate}/5 </h2>
+        </div>
+      </div>
+      <div className="w-1/2 h-3/5 mt-6 flex flex-col justify-evenly items-center">
+        <h1 className="text-justify">{product.description}</h1>
+        <div className="w-3/5 flex justify-around font-title-font text-5xl">
+          <button>-</button>
+          <h2>{cuantity}</h2>
+          <button>+</button>
+        </div>
+        <button className="font-title-font hover:text-black hover:bg-white p-3 rounded-full">
+          ADD TO CART
+        </button>
+      </div>
+      <div>
+        <h1 className="text-justify">{product.title}</h1>
+      </div>
     </div>
   );
 };

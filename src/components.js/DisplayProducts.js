@@ -11,6 +11,7 @@ export const DisplayProducts = ({ products }) => {
         price={product.price}
         id={product.id}
         key={product.id}
+        cardName="ProductsCards"
       />
     );
   });

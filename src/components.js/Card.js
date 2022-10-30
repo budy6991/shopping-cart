@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export const Card = ({ title, price, image, id }) => {
+export const Card = ({ title, price, image, id, cardName }) => {
   const navigate = useNavigate();
 
   return (
@@ -15,7 +15,7 @@ export const Card = ({ title, price, image, id }) => {
           src={image}
         ></img>
       </div>
-      <div className="m-4 font-main-font">
+      <div className="m-4 font-apple">
         <div>
           <h2>{title}</h2>
         </div>

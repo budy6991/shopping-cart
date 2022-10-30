@@ -35,7 +35,7 @@ function App() {
   }, []);
 
   return (
-    <div className="w-screen h-full bg-main-color font-main-font flex flex-col justify-between">
+    <div className="w-screen h-full bg-main-color flex flex-col justify-between">
       <Router basename="/">
         <NavBar />
         <Routes>
