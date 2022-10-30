@@ -6,12 +6,14 @@ import "./App.css";
 import { Footer } from "./components.js/Footer";
 import { Home } from "./components.js/Home";
 import { NavBar } from "./components.js/NavBar";
+import { ProductPage } from "./components.js/ProductPage";
 import { Shop } from "./components.js/Shop";
 import { ShoppingCart } from "./components.js/ShoppingCart";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const url = "https://fakestoreapi.com/products";
@@ -39,6 +41,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="shop" element={<Shop products={products} />} />
+          <Route
+            path="shop/:productId"
+            element={<ProductPage products={products} />}
+          />
           <Route path="shopping-cart" element={<ShoppingCart />} />
         </Routes>
         <Footer />

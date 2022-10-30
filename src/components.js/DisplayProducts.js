@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "./Card";
+import { Outlet } from "react-router-dom";
 
 export const DisplayProducts = ({ products }) => {
   const displayAll = products.map((product) => {
