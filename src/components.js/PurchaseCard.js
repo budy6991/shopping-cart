@@ -22,7 +22,7 @@ export const PurchaseCard = ({ title, image, price, id, key, quantity }) => {
           </div>
           <div className="flex justify-around font-title-font text-xl">
             <button>-</button>
-            <button className="hover:bg-red-700 hover:text-black hover:rounded-full p-1">
+            <button className="hover:bg-red-900 hover:text-white hover:rounded-full p-1 hover:shadow-md hover:shadow-black">
               Remove
             </button>
             <button>+</button>
