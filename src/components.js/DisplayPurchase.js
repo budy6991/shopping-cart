@@ -19,5 +19,5 @@ export const DisplayPurchase = ({ cart, editAdd, remove }) => {
       />
     );
   });
-  return <div className="h-fit w-fit flex">{displayAll}</div>;
+  return <div className="h-fit w-full flex">{displayAll}</div>;
 };

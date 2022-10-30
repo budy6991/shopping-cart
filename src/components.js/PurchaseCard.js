@@ -17,8 +17,8 @@ export const PurchaseCard = ({
 
   return (
     <>
-      <button className="w-1/6 m-6  text-spot-color rounded-xl flex flex-col justify-between items-space-evenly shadow-xl shadow-gray-800 transition-all hover:scale-105 hover:shadow-gray-300 hover:shadow-sm bg-stone-800 hover:border-spot-color hover:border-2">
-        <div className="p-6 ">
+      <button className="w-1/6 m-6 mt-0  text-spot-color rounded-xl flex flex-col justify-between items-space-evenly shadow-xl shadow-gray-800 transition-all hover:scale-105 hover:shadow-gray-300 hover:shadow-sm bg-stone-800 hover:border-spot-color hover:border-2 p-6">
+        <div>
           <img
             className="h-fit w-fit object-fill aspect-square"
             src={image}
