@@ -37,6 +37,7 @@ export const PurchaseCard = ({
           <div className="flex justify-around font-title-font text-xl">
             <button
               className="transition-all hover:scale-125"
+              disabled={quantity < 2}
               onClick={() => {
                 setChangeQuantity(changeQuantity - 1);
               }}
