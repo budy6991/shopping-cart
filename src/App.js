@@ -15,6 +15,11 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [cart, setCart] = useState([]);
 
+  const handleShoppingCart = (product) => {
+    setCart(cart.concat(product));
+    console.log(cart);
+  };
+
   useEffect(() => {
     const url = "https://fakestoreapi.com/products";
 
@@ -43,7 +48,12 @@ function App() {
           <Route path="shop" element={<Shop products={products} />} />
           <Route
             path="shop/:productId"
-            element={<ProductPage products={products} />}
+            element={
+              <ProductPage
+                products={products}
+                handleShoppingCart={handleShoppingCart}
+              />
+            }
           />
           <Route path="shopping-cart" element={<ShoppingCart />} />
         </Routes>

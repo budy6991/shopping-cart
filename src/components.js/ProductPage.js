@@ -2,13 +2,16 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Card } from "./Card";
+import { useNavigate } from "react-router-dom";
 
-export const ProductPage = ({ products }) => {
+export const ProductPage = ({ products, handleShoppingCart }) => {
   const params = useParams();
   const productId = Number(params.productId);
   let product = products.find((product) => product.id === productId);
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(product.price);
+
+  const navigate = useNavigate();
 
   const addProduct = () => {
     setQuantity(quantity + 1);
@@ -16,6 +19,10 @@ export const ProductPage = ({ products }) => {
 
   const substractProduct = () => {
     setQuantity(quantity - 1);
+  };
+
+  const handleSubmit = () => {
+    handleShoppingCart({ quantity, totalPrice, productId });
   };
 
   useEffect(() => {
@@ -60,7 +67,13 @@ export const ProductPage = ({ products }) => {
             +
           </button>
         </div>
-        <button className="font-title-font hover:text-black hover:bg-white p-3 rounded-full">
+        <button
+          className="font-title-font hover:text-black hover:bg-white p-3 rounded-full"
+          onClick={() => {
+            handleSubmit();
+            navigate("/shop");
+          }}
+        >
           ADD TO CART
         </button>
       </div>
