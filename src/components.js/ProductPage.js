@@ -7,7 +7,7 @@ export const ProductPage = ({ products }) => {
   const params = useParams();
   const productId = Number(params.productId);
   const [cuantity, setCuantity] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(null);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   let product = products.find((product) => product.id === productId);
   console.log(product);
@@ -38,7 +38,7 @@ export const ProductPage = ({ products }) => {
           <h2>Opinions: {product.rating.rate}/5 </h2>
         </div>
       </div>
-      <div className="w-1/2 h-3/5 mt-6 flex flex-col justify-evenly items-center">
+      <div className="w-1/2 h-3/5 flex flex-col justify-evenly items-center">
         <h1 className="text-justify">{product.description}</h1>
         <div className="w-3/5 flex justify-around font-title-font text-5xl">
           <button>-</button>
@@ -49,8 +49,12 @@ export const ProductPage = ({ products }) => {
           ADD TO CART
         </button>
       </div>
-      <div>
-        <h1 className="text-justify">{product.title}</h1>
+      <div className="h-1/2 w-1/4 flex justify-center flex-col m-10 g-8 font-title-font">
+        <h1 className="text-center self-center my-6">TOTAL</h1>
+        <h1 className="text-center self-center my-6 text-3xl">
+          {" "}
+          {totalPrice}$
+        </h1>
       </div>
     </div>
   );
