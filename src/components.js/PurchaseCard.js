@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
-export const PurchaseCard = ({ title, image, price, id, key, quantity }) => {
+export const PurchaseCard = ({
+  title,
+  image,
+  price,
+  id,
+  key,
+  quantity,
+  edit,
+}) => {
+  const [changeQuantity, setChangeQuantity] = useState(quantity);
+
   return (
     <>
       <button className="w-1/6 m-6  text-spot-color rounded-xl flex flex-col justify-between items-space-evenly shadow-xl shadow-gray-800 transition-all hover:scale-105 hover:shadow-gray-300 hover:shadow-sm bg-stone-800 hover:border-spot-color hover:border-2">
@@ -21,11 +31,19 @@ export const PurchaseCard = ({ title, image, price, id, key, quantity }) => {
             <h2>Quantity: {quantity}</h2>
           </div>
           <div className="flex justify-around font-title-font text-xl">
-            <button>-</button>
+            <button className="transition-all hover:scale-125">-</button>
             <button className="hover:bg-red-900 hover:text-white hover:rounded-full p-1 hover:shadow-md hover:shadow-black">
               Remove
             </button>
-            <button>+</button>
+            <button
+              className="transition-all hover:scale-125"
+              onClick={() => {
+                setChangeQuantity(changeQuantity + 1);
+                edit(id, changeQuantity);
+              }}
+            >
+              +
+            </button>
           </div>
         </div>
       </button>

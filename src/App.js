@@ -20,6 +20,22 @@ function App() {
     console.log(cart);
   };
 
+  // const handleEdit = (id, quantity) => {};
+
+  //find the product, and edit the quantity.
+
+  const handleEdit = (id, quantity) => {
+    setCart(
+      cart.map((item) => {
+        if (item.productId === id) {
+          item.quantity = quantity;
+          console.log(item);
+        }
+        return item;
+      })
+    );
+  };
+
   useEffect(() => {
     const url = "https://fakestoreapi.com/products";
 
@@ -56,7 +72,10 @@ function App() {
               />
             }
           />
-          <Route path="shopping-cart" element={<ShoppingCart cart={cart} />} />
+          <Route
+            path="shopping-cart"
+            element={<ShoppingCart cart={cart} edit={handleEdit} />}
+          />
         </Routes>
         <Footer />
       </Router>
