@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { DisplayPurchase } from "./DisplayPurchase";
+import { useState } from "react";
 
-export const ShoppingCart = ({ cart, editAdd, editSubstract }) => {
+export const ShoppingCart = ({ cart, editAdd, remove, totalPrice }) => {
   return (
-    <div className="w-screen h-screen ">
-      <h1 className="text-center text-2xl font-title-font text-gray-400">
-        SHOPPING CART
-      </h1>
-      <DisplayPurchase cart={cart} editAdd={editAdd} />
+    <div className="w-screen h-screen flex justify-between">
+      <div>
+        <DisplayPurchase cart={cart} editAdd={editAdd} remove={remove} />
+      </div>
+      <div className="text-white border-2 border-white">
+        Total: {totalPrice}
+      </div>
     </div>
   );
 };

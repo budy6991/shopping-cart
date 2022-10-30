@@ -14,10 +14,10 @@ function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [cart, setCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const handleShoppingCart = (product) => {
     setCart(cart.concat(product));
-    console.log(cart);
   };
 
   const handleEditAdd = (id, quantity) => {
@@ -26,25 +26,30 @@ function App() {
         if (item.productId === id) {
           item.quantity = quantity;
           item.totalPrice += item.price;
-          console.log(cart);
         }
         return item;
       })
     );
   };
 
-  // const handleEditSubstract = (id, quantity) => {
-  //   setCart(
-  //     cart.map((item) => {
-  //       if (item.productId === id) {
-  //         item.quantity = quantity;
-  //         item.totalPrice -= item.price;
-  //         console.log(cart);
-  //       }
-  //       return item;
-  //     })
-  //   );
-  // };
+  useEffect(() => {
+    const getTotalPrice = () => {
+      setTotalPrice(
+        cart.reduce((accumulator, item) => {
+          return (accumulator += item.productPrice * item.quantity);
+        }, 0)
+      );
+    };
+    getTotalPrice();
+  }, [cart]);
+
+  const handleRemove = (id) => {
+    setCart(
+      cart.filter((item) => {
+        return item.productId != id;
+      })
+    );
+  };
 
   useEffect(() => {
     const url = "https://fakestoreapi.com/products";
@@ -84,7 +89,14 @@ function App() {
           />
           <Route
             path="shopping-cart"
-            element={<ShoppingCart cart={cart} editAdd={handleEditAdd} />}
+            element={
+              <ShoppingCart
+                cart={cart}
+                editAdd={handleEditAdd}
+                remove={handleRemove}
+                totalPrice={totalPrice}
+              />
+            }
           />
         </Routes>
         <Footer />

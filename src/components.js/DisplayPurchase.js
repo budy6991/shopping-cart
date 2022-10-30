@@ -1,7 +1,7 @@
 import React from "react";
 import { PurchaseCard } from "./PurchaseCard";
 
-export const DisplayPurchase = ({ cart, editAdd }) => {
+export const DisplayPurchase = ({ cart, editAdd, remove }) => {
   console.log(cart);
   const displayAll = cart.map((item) => {
     console.log(item.id);
@@ -15,6 +15,7 @@ export const DisplayPurchase = ({ cart, editAdd }) => {
         id={item.productId}
         key={item.productId}
         editAdd={editAdd}
+        remove={remove}
       />
     );
   });

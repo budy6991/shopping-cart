@@ -7,6 +7,7 @@ export const PurchaseCard = ({
   id,
   quantity,
   editAdd,
+  remove,
 }) => {
   const [changeQuantity, setChangeQuantity] = useState(quantity);
 
@@ -42,7 +43,10 @@ export const PurchaseCard = ({
             >
               -
             </button>
-            <button className="hover:bg-red-900 hover:text-white hover:rounded-full p-1 hover:shadow-md hover:shadow-black">
+            <button
+              className="hover:bg-red-900 hover:text-white hover:rounded-full p-1 hover:shadow-md hover:shadow-black"
+              onClick={() => remove(id)}
+            >
               Remove
             </button>
             <button
