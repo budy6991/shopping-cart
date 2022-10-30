@@ -12,6 +12,7 @@ export const ProductPage = ({ products, handleShoppingCart }) => {
   const [totalPrice, setTotalPrice] = useState(product.price);
   const [productTitle, setProductTitle] = useState(product.title);
   const [productImage, setProductImage] = useState(product.image);
+  const [productPrice, setProductPrice] = useState(product.price);
 
   const navigate = useNavigate();
 
@@ -26,7 +27,7 @@ export const ProductPage = ({ products, handleShoppingCart }) => {
   const handleSubmit = () => {
     handleShoppingCart({
       quantity,
-      totalPrice,
+      productPrice,
       productId,
       productTitle,
       productImage,

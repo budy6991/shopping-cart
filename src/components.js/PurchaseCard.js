@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export const PurchaseCard = ({
   title,
   image,
   price,
   id,
-  key,
   quantity,
-  edit,
+  editAdd,
 }) => {
   const [changeQuantity, setChangeQuantity] = useState(quantity);
+
+  useEffect(() => {
+    editAdd(id, changeQuantity);
+  }, [changeQuantity]);
 
   return (
     <>
@@ -25,13 +28,20 @@ export const PurchaseCard = ({
             <h2>{title}</h2>
           </div>
           <div className="m-5 text-xl font-title-font">
-            <h2>Total: {price}$</h2>
+            <h2>Total: {price * quantity}$</h2>
           </div>
           <div className="m-5 text-l font-title-font">
             <h2>Quantity: {quantity}</h2>
           </div>
           <div className="flex justify-around font-title-font text-xl">
-            <button className="transition-all hover:scale-125">-</button>
+            <button
+              className="transition-all hover:scale-125"
+              onClick={() => {
+                setChangeQuantity(changeQuantity - 1);
+              }}
+            >
+              -
+            </button>
             <button className="hover:bg-red-900 hover:text-white hover:rounded-full p-1 hover:shadow-md hover:shadow-black">
               Remove
             </button>
@@ -39,7 +49,6 @@ export const PurchaseCard = ({
               className="transition-all hover:scale-125"
               onClick={() => {
                 setChangeQuantity(changeQuantity + 1);
-                edit(id, changeQuantity);
               }}
             >
               +
