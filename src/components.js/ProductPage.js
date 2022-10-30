@@ -10,6 +10,8 @@ export const ProductPage = ({ products, handleShoppingCart, shoppingCart }) => {
   let product = products.find((product) => product.id === productId);
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(product.price);
+  const [productTitle, setProductTitle] = useState(product.title);
+  const [productImage, setProductImage] = useState(product.image);
 
   const navigate = useNavigate();
 
@@ -22,7 +24,13 @@ export const ProductPage = ({ products, handleShoppingCart, shoppingCart }) => {
   };
 
   const handleSubmit = () => {
-    handleShoppingCart({ quantity, totalPrice, productId });
+    handleShoppingCart({
+      quantity,
+      totalPrice,
+      productId,
+      productTitle,
+      productImage,
+    });
   };
 
   useEffect(() => {

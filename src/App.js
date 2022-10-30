@@ -17,6 +17,7 @@ function App() {
 
   const handleShoppingCart = (product) => {
     setCart(cart.concat(product));
+    console.log(cart);
   };
 
   useEffect(() => {
