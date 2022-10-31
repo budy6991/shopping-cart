@@ -63,6 +63,7 @@ export const ProductPage = ({ products, handleShoppingCart }) => {
         <div className="w-3/5 flex justify-around font-title-font text-5xl">
           <button
             disabled={quantity < 2}
+            className="disabled:opacity-25"
             onClick={() => {
               substractProduct();
             }}
