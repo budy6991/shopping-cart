@@ -30,7 +30,7 @@ export const NavBar = ({ cart }) => {
       </button>
       <div className=" font-title-font flex">
         <button
-          onClick={() => navigate("shopping-cart")}
+          onClick={() => navigate("cart")}
           className="hover:underline hover:underline-offset-8 decoration-4 font-title-font bg-contain"
         >
           <svg

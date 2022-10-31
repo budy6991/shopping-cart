@@ -72,7 +72,7 @@ function App() {
 
   return (
     <div className="w-screen h-full bg-main-color flex flex-col justify-between">
-      <Router basename="/">
+      <Router basename="/shopping-cart">
         <NavBar cart={cart} />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -88,7 +88,7 @@ function App() {
             }
           />
           <Route
-            path="shopping-cart"
+            path="cart"
             element={
               <ShoppingCart
                 cart={cart}
